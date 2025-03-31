@@ -1,6 +1,6 @@
 {
-  "name": "MyWebSite",
-  "short_name": "MySite",
+  "name": "Worldwide Potatoes",
+  "short_name": "Worldwide Potatoes",
   "icons": [
     {
       "src": "/assets/favicon/web-app-manifest-192x192.png",
