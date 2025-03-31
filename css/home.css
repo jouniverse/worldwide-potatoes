@@ -1,0 +1,259 @@
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Fira+Code:wght@300..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+/* Reset styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Custom properties for animation */
+@property --hue1 {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@property --hue2 {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+/* Basic document setup */
+html,
+body {
+  scroll-behavior: smooth;
+  overflow-y: auto;
+  height: auto;
+}
+
+/* Main body styles - IMPORTANT: No overflow restrictions */
+body {
+  width: 100%;
+  /* min-height will be set by JavaScript */
+  text-align: center;
+  position: relative;
+  padding-bottom: 0;
+  background-color: black;
+}
+
+/* Separate background element */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; /* This is correct */
+  z-index: -1;
+  background-image: linear-gradient(
+      to right,
+      oklch(0.93 0.08 var(--hue1) / 50%),
+      oklch(0.93 0.08 var(--hue2) / 50%)
+    ),
+    linear-gradient(
+      to bottom,
+      oklch(0.93 0.08 var(--hue1) / 50%),
+      oklch(0.93 0.08 var(--hue2) / 50%)
+    );
+  background-size: 100% 100%;
+  animation-name: anim_bg;
+  animation-duration: 5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 100vh, 0 100vh); /* Add this line */
+}
+
+@keyframes anim_bg {
+  0% {
+    --hue1: 0deg;
+    --hue2: 300deg;
+  }
+  100% {
+    --hue1: 360deg;
+    --hue2: 660deg;
+  }
+}
+
+/* Main content - Fixed in first viewport, but hidden when scrolled */
+.main-content {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  pointer-events: none;
+  z-index: 2;
+  transition: opacity 0.3s ease; /* Add smooth transition */
+}
+
+/* Navigation icons - Also hidden when scrolled */
+.nav-icons {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 15px;
+  z-index: 5;
+  pointer-events: auto;
+  transition: opacity 0.3s ease; /* Add smooth transition */
+}
+
+.nav-icon {
+  width: 48px;
+  height: 48px;
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+
+.icon-link:hover .nav-icon {
+  opacity: 0.7;
+}
+
+/* Scroll indicator - Hidden when scrolled */
+.scroll-indicator {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  animation: bounce 2s infinite;
+  pointer-events: auto;
+  cursor: pointer;
+  transition: opacity 0.3s ease; /* Add smooth transition */
+}
+
+.scroll-arrow {
+  width: 64px;
+  height: 48px;
+  opacity: 0.2;
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-5px);
+  }
+  60% {
+    transform: translateY(-2px);
+  }
+}
+
+/* Content sections - Make them part of the normal flow */
+.content-sections {
+  position: absolute;
+  top: 100vh;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  display: block;
+  /* min-height will be set by JavaScript */
+}
+
+/* Ensure each section is visible and clearly separated */
+.content-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  height: auto;
+  background-color: black;
+  color: white;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 4rem 2rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #333;
+}
+
+/* Make sure sections stack properly */
+.content-section:nth-child(2) {
+  /* Apply different styling to the second section for visual distinction */
+  background-color: #111;
+}
+
+/* Add styling for the third section */
+.content-section:nth-child(3) {
+  background-color: #0a0a0a; /* Slightly different shade for visual distinction */
+}
+
+/* Button container */
+.button-wrap {
+  margin: 10px;
+  pointer-events: auto;
+  z-index: 3;
+}
+
+/* Style the button links */
+.button-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  pointer-events: auto;
+}
+
+.bento-container {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+/* Add smooth scrolling behavior to make scrolling more pleasant */
+/* html {
+  scroll-behavior: smooth;
+  overflow-y: auto;
+  height: auto;
+} */
+
+/* Add these styles at the end of the file */
+.group:hover img {
+  filter: opacity(0.2) sepia(1) saturate(2) hue-rotate(290deg) !important;
+}
+
+.group {
+  transition: transform 0.3s ease-in-out;
+}
+
+/* .group:hover {
+  transform: scale(1.02);
+} */
+
+/* Style the scrollbar in the overlay text */
+.group .text-white::-webkit-scrollbar {
+  width: 6px;
+}
+
+.group .text-white::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.group .text-white::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+.group .text-white::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Add hover effect for pink links */
+.text-pink-400:hover {
+  /* This is the Tailwind pink-300 color */
+  /* color: rgb(249, 168, 212); */
+  /* This is the Tailwind pink-200 color */
+  color: #fccee8;
+  transition: color 0.3s ease;
+}

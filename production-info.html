@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Worldwide Potatoes</title>
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="/assets/favicon/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/favicon/apple-touch-icon.png"
+    />
+    <link rel="manifest" href="/assets/favicon/site.webmanifest" />
+    <link rel="stylesheet" href="./css/tailwind.css" />
+    <link rel="stylesheet" href="./css/mobile-blocker.css" />
+    <link rel="stylesheet" href="./css/production-info.css" />
+    <link rel="stylesheet" href="./css/scrollbar.css" />
+  </head>
+  <body>
+    <div
+      id="popUpEl"
+      class="bg-black bg-opacity-75 fixed ml-4 p-4 rounded-lg hidden"
+      style="
+        min-width: 300px;
+        pointer-events: none;
+        transform: translate(-50%, -100%);
+        transition: transform 0.1s ease-out;
+      "
+    >
+      <h2 class="text-white text-sm mb-2">
+        <span id="countryNameEl"></span>
+      </h2>
+      <p id="productionValueEl" class="text-white text-sm mb-4"></p>
+      <div id="chartContainer" class="w-full h-40">
+        <canvas id="productionChart"></canvas>
+      </div>
+      <p id="noDataEl" class="text-white text-sm hidden">
+        No potato production data available
+      </p>
+    </div>
+    <div id="sidebar" class="xl:flex h-screen bg-black">
+      <div class="xl:w-1/4 flex flex-col justify-top px-8 py-20">
+        <div style="max-width: 500px">
+          <a
+            href="./home.html"
+            style="text-decoration: none; display: inline-block"
+          >
+            <button class="btn-primary">Back to Home</button>
+          </a>
+          <h1
+            class="text-pink-400 text-xl font-bold mb-8 font-fira leading-none"
+          >
+            Explore Worldwide Potatoes
+          </h1>
+          <div id="sidebarContent" class="text-white font-lato">
+            <h2 id="sidebarCountry" class="text-2xl mb-4 font-fira">
+              Select a country
+            </h2>
+            <p id="sidebarPopulation" class="text-gray-400 mb-4"></p>
+            <div id="chartsContainer" class="space-y-8 hidden">
+              <div class="chart-container">
+                <h3 class="text-lg mb-3">Area Harvested</h3>
+                <div style="height: 200px">
+                  <canvas id="areaChart"></canvas>
+                </div>
+              </div>
+              <div class="chart-container">
+                <h3 class="text-lg mb-3">Yield</h3>
+                <div style="height: 200px">
+                  <canvas id="yieldChart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="h-screen xl:w-3/4" id="canvas-container">
+        <canvas id="canvas"></canvas>
+      </div>
+    </div>
+    <!-- import countries.json -->
+    <script src="./data/json/countries.json" type="application/json"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/gsap.min.js"></script>
+    <script type="module" src="./js/production-info.js"></script>
+    <script src="./js/mobile-blocker.js"></script>
+  </body>
+</html>

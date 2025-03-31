@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Worldwide Potatoes</title>
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="/assets/favicon/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/favicon/apple-touch-icon.png"
+    />
+    <link rel="manifest" href="/assets/favicon/site.webmanifest" />
+    <link rel="stylesheet" href="./css/tailwind.css" />
+    <link rel="stylesheet" href="./css/mobile-blocker.css" />
+    <link rel="stylesheet" href="./css/potato-ngram.css" />
+    <link rel="stylesheet" href="./css/scrollbar.css" />
+  </head>
+  <body>
+    <div class="min-h-screen bg-black text-white p-8">
+      <!-- Back button -->
+      <a
+        href="./home.html"
+        style="text-decoration: none; display: inline-block"
+      >
+        <button class="btn-primary">Back to Home</button>
+      </a>
+
+      <!-- Header -->
+      <div class="mb-8 mt-8 pt-8 pl-16">
+        <h1 class="text-4xl font-fira font-bold text-hotpink">
+          Potato Fame 1597-2021
+        </h1>
+      </div>
+
+      <!-- Intro text section with bento box design -->
+      <div class="chart-container">
+        <div class="grid grid-cols-1 gap-4">
+          <div
+            class="bg-white/5 backdrop-blur-sm rounded-2xl p-8 hover:border-hotpink/30 transition-colors duration-300"
+          >
+            <p class="font-fira text-md leading-relaxed">
+              Yes, unfortunately years of potato fame have been years of famine
+              for everyone else. The world wars have apparently been years of
+              potato greatness as well. The graph shows the word "potato"
+              becoming more and more common in the English language. This is not
+              a coincidence. As the word becomes more common, the potato is
+              taking over the world. Also, it seems that there is a direct
+              correlation between the frequency of the word "potato" and the
+              increase in the number of couches sold.
+            </p>
+            <br />
+            <p class="font-fira text-md leading-relaxed">
+              In 1597, the potato made its grand entrance into English
+              literature, courtesy of John Gerard's 'The Herball or Generall
+              Historie of Plantes.' Gerard, who was swapping plant gossip with
+              the botanist Clusius and even grew some spuds himself, gave us the
+              first written description. However, like a tourist with a bad map,
+              Gerard got the potato's origins wrong, dubbing it the 'Virginian
+              Potato' to differentiate it from its sweeter, red cousin. So, the
+              potato's English story begins with a bit of a geographical mix-up,
+              but hey, at least it got a book deal.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="chart-container mt-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div
+            class="bg-white/5 backdrop-blur-sm rounded-2xl p-4 aspect-square"
+          >
+            <div class="relative h-full w-full overflow-hidden rounded-xl">
+              <a
+                href="https://play.google.com/store/books/details/John_Gerard_The_Herball_Or_Generall_Historie_of_Pl?id=pgZfAAAAcAAJ"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="./assets/imgs/potato-ngram/potato-gerard-1.png"
+                  alt="potato-gerard-1"
+                  class="object-cover w-full h-full transition-all duration-50"
+                  style="
+                    filter: opacity(0.8) sepia(1) saturate(2) hue-rotate(290deg);
+                  "
+                  onmouseover="this.style.filter='none'"
+                  onmouseout="this.style.filter='opacity(0.8) sepia(1) saturate(2) hue-rotate(290deg)'"
+                />
+              </a>
+            </div>
+          </div>
+
+          <div
+            class="bg-white/5 backdrop-blur-sm rounded-2xl p-4 aspect-square"
+          >
+            <div class="relative h-full w-full overflow-hidden rounded-xl">
+              <img
+                src="./assets/imgs/potato-ngram/potato-gerard-2.png"
+                alt="potato-gerard-2"
+                class="object-cover w-full h-full cursor-pointer"
+                style="
+                  filter: opacity(0.8) sepia(1) saturate(2) hue-rotate(290deg);
+                "
+                onclick="openModal(this.src)"
+              />
+            </div>
+          </div>
+
+          <div
+            class="bg-white/5 backdrop-blur-sm rounded-2xl p-4 aspect-square"
+          >
+            <div class="relative h-full w-full overflow-hidden rounded-xl">
+              <img
+                src="./assets/imgs/potato-ngram/potato-gerard-3.png"
+                alt="potato-gerard-3"
+                class="object-cover w-full h-full cursor-pointer"
+                style="
+                  filter: opacity(0.8) sepia(1) saturate(2) hue-rotate(290deg);
+                "
+                onclick="openModal(this.src)"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Chart container -->
+      <div class="chart-container" style="height: 70vh">
+        <canvas id="ngramChart"></canvas>
+      </div>
+
+      <!-- Collapsible historical trends section -->
+      <div class="mt-12">
+        <button id="toggleTrends" class="btn-primary ml-8 mb-4">
+          Show Historical Trends
+        </button>
+
+        <div id="trendsContent" class="hidden">
+          <div class="chart-container">
+            <h2 class="text-2xl font-fira text-hotpink mb-8">
+              Key Historical Trends (or, The Potato's Slow, Starchy Takeover)
+            </h2>
+
+            <div class="grid gap-8">
+              <!-- Early Mentions -->
+              <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-8">
+                <h3 class="text-xl font-fira text-hotpink mb-4">
+                  Early Mentions (1600-1700): "The Suspicious Spud" Era
+                </h3>
+                <div class="space-y-4 font-fira text-md leading-relaxed">
+                  <p>
+                    Europeans met the potato with all the enthusiasm of a soggy
+                    chip. 'Nightshade? Sounds like a rock band for vampires,'
+                    they thought. Mostly, it was horse food. Talk about a rough
+                    start.
+                  </p>
+                  <p>
+                    Mentions were rarer than a well-done French fry. The potato
+                    was basically the awkward cousin at the family reunion.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Rise in Mentions -->
+              <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-8">
+                <h3 class="text-xl font-fira text-hotpink mb-4">
+                  Rise in Mentions (1700-1800): "The Little Ice Age, Big Potato
+                  Dreams"
+                </h3>
+                <div class="space-y-4 font-fira text-md leading-relaxed">
+                  <p>
+                    Turns out, when the world freezes, potatoes are your best
+                    friend. Governments, in a moment of clarity, realized 'Hey,
+                    maybe this weird root isn't so bad.' Mentions skyrocketed as
+                    people realized they could survive on something other than
+                    frozen turnips.
+                  </p>
+                  <p>
+                    The potato started its campaign of world domination, one
+                    frostbitten farm at a time.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Sharp Increase -->
+              <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-8">
+                <h3 class="text-xl font-fira text-hotpink mb-4">
+                  Sharp Increase (1800-1850): "The Potato's Peak, and a Painful
+                  Fall"
+                </h3>
+                <div class="space-y-4 font-fira text-md leading-relaxed">
+                  <p>
+                    The potato became the rockstar of European agriculture,
+                    fueling cities and causing a population boom. And then,
+                    <a
+                      href="https://www.ighm.org/learn.html"
+                      class="text-pink-400"
+                      >the Great Irish Famine</a
+                    >. A stark reminder that even rockstars can have a bad day.
+                    Or a blight. A very bad blight.
+                  </p>
+                  <p>
+                    Global attention was drawn to the potato. Mostly in the form
+                    of people yelling about how hungry they were.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Decline Post-Famine -->
+              <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-8">
+                <h3 class="text-xl font-fira text-hotpink mb-4">
+                  Decline Post-Famine (1850-1900): "The Potato's Post-Fame
+                  Blues"
+                </h3>
+                <div class="space-y-4 font-fira text-md leading-relaxed">
+                  <p>
+                    After the famine, everyone was like, 'Okay, maybe we
+                    shouldn't put all our eggs (or potatoes) in one basket.'
+                    Mentions dipped, along with Ireland's population. But small
+                    famines kept the potato in the news, like a has-been
+                    celebrity clinging to relevance.
+                  </p>
+                </div>
+              </div>
+
+              <!-- 20th Century Peaks -->
+              <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-8">
+                <h3 class="text-xl font-fira text-hotpink mb-4">
+                  20th Century Peaks (1900-1950): "The Potato Goes to War (and
+                  Gets Deep-Fried)"
+                </h3>
+                <div class="space-y-4 font-fira text-md leading-relaxed">
+                  <p>
+                    World Wars: when potatoes became soldiers' best friends. And
+                    civilians' too. Also, the birth of the chip. Because even in
+                    wartime, you need a good snack.
+                  </p>
+                  <p>
+                    Industrial agriculture and the rise of processed potato
+                    products. Proof that humans will find a way to make anything
+                    into a convenient, salty snack.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Modern Mentions -->
+              <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-8">
+                <h3 class="text-xl font-fira text-hotpink mb-4">
+                  Modern Mentions (1950-2022): "The Potato: Global Superstar"
+                </h3>
+                <div class="space-y-4 font-fira text-md leading-relaxed">
+                  <p>
+                    Potatoes are everywhere, in every cuisine. They've achieved
+                    global domination without firing a single shot (or frying a
+                    single chip... okay, maybe a few chips). Genetic research
+                    keeps the potato in the lab, and on the menu.
+                  </p>
+                  <p>
+                    The potato has achieved a state of omnipresence. It is
+                    everywhere. Resistance is futile.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Image gallery -->
+      <div class="chart-container mt-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div
+            class="bg-white/5 backdrop-blur-sm rounded-2xl p-4 aspect-square"
+          >
+            <div class="relative h-full w-full overflow-hidden rounded-xl">
+              <img
+                src="./assets/imgs/potato-ngram/pn-1.png"
+                alt="potato-ngram-1"
+                class="object-cover w-full h-full"
+                style="
+                  filter: opacity(0.8) sepia(1) saturate(2) hue-rotate(290deg);
+                "
+              />
+            </div>
+          </div>
+
+          <div
+            class="bg-white/5 backdrop-blur-sm rounded-2xl p-4 aspect-square"
+          >
+            <div class="relative h-full w-full overflow-hidden rounded-xl">
+              <img
+                src="./assets/imgs/potato-ngram/pn-2.png"
+                alt="potato-ngram-2"
+                class="object-cover w-full h-full"
+                style="
+                  filter: opacity(0.8) sepia(1) saturate(2) hue-rotate(290deg);
+                "
+              />
+            </div>
+          </div>
+
+          <div
+            class="bg-white/5 backdrop-blur-sm rounded-2xl p-4 aspect-square"
+          >
+            <div class="relative h-full w-full overflow-hidden rounded-xl">
+              <img
+                src="./assets/imgs/potato-ngram/pn-3.png"
+                alt="potato-ngram-3"
+                class="object-cover w-full h-full"
+                style="
+                  filter: opacity(0.8) sepia(1) saturate(2) hue-rotate(290deg);
+                "
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation"></script>
+    <script src="./js/mobile-blocker.js"></script>
+    <script src="./js/potato-ngram.js"></script>
+    <script>
+      document
+        .getElementById("toggleTrends")
+        .addEventListener("click", function () {
+          const content = document.getElementById("trendsContent");
+          const button = document.getElementById("toggleTrends");
+          if (content.classList.contains("hidden")) {
+            content.classList.remove("hidden");
+            button.textContent = "Hide Historical Trends";
+          } else {
+            content.classList.add("hidden");
+            button.textContent = "Show Historical Trends";
+          }
+        });
+
+      function openModal(imgSrc) {
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+        modal.style.display = "block";
+        modalImg.src = imgSrc;
+        document.body.style.overflow = "hidden"; // Prevent scrolling when modal is open
+      }
+
+      function closeModal() {
+        const modal = document.getElementById("imageModal");
+        modal.style.display = "none";
+        document.body.style.overflow = "auto"; // Restore scrolling
+      }
+
+      // Close modal with Escape key
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+          closeModal();
+        }
+      });
+    </script>
+
+    <!-- Add these modal elements just before the closing body tag -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+      <img class="modal-content" id="modalImage" />
+    </div>
+  </body>
+</html>

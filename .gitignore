@@ -1,0 +1,7 @@
+notes/
+*.zip
+.DS_Store
+.cursorrules
+.vscode/
+*.psd
+*.ai

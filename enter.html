@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Worldwide Potatoes</title>
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="/assets/favicon/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/favicon/apple-touch-icon.png"
+    />
+    <link rel="manifest" href="/assets/favicon/site.webmanifest" />
+    <link rel="stylesheet" href="./css/tailwind.css" />
+    <link rel="stylesheet" href="./css/mobile-blocker.css" />
+    <link rel="stylesheet" href="./css/enter.css" />
+    <link rel="stylesheet" href="./css/glass-btn.css" />
+    <link rel="stylesheet" href="./css/scrollbar.css" />
+  </head>
+  <body>
+    <div class="video-container">
+      <video autoplay muted loop playsinline id="bgVideo">
+        <source src="./assets/videos/enter-bg-video.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <div class="filter-toggle">
+      <label class="switch">
+        <input type="checkbox" id="filterToggle" />
+        <span class="slider round"></span>
+      </label>
+      <span class="toggle-label"></span>
+    </div>
+    <div class="content-container">
+      <div class="button-wrap">
+        <a href="./home.html">
+          <button>
+            <span>Enter</span>
+          </button>
+          <div class="button-shadow"></div>
+        </a>
+      </div>
+    </div>
+    <script src="./js/enter.js"></script>
+    <!--  mobile blocker -->
+    <script src="./js/mobile-blocker.js"></script>
+  </body>
+</html>

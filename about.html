@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Worldwide Potatoes</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/assets/favicon/site.webmanifest" />
+    <link rel="stylesheet" href="./css/tailwind.css" />
+    <link rel="stylesheet" href="./css/mobile-blocker.css" />
+    <link rel="stylesheet" href="./css/about.css" />
+    <link rel="stylesheet" href="./css/scrollbar.css" />
+  </head>
+  <body>
+    <div class="container mx-auto px-8 py-8">
+      <a
+        href="./home.html"
+        style="text-decoration: none; display: inline-block"
+      >
+        <button class="btn-primary">Back to Home</button>
+      </a>
+
+      <h1 class="text-white text-3xl font-bold mb-8 font-fira mt-12">About</h1>
+
+      <p class="text-white text-md font-fira mb-8">
+        Con te partirò... Time to say goodbye, or perhaps hello? This app is a
+        collection of data visualizations and information about potatoes. We
+        have learned that potatoes rule the world. No head of state should be
+        ignorant of potatoes, at least according to
+        <a class="text-pink-400"  href=https://en.chateauversailles.fr/discover/history/great-characters/antoine-augustin-parmentier#parmentier-member-of-the-agricultural-society"
+          >Antoine Augustin Parmentier</a
+        >.
+        <br />
+        <br />
+        Non-human intelligence has definitely not been used in creating the
+        images. For example, there was most certainly an Egyptian god with a
+        potato on his (or her) head. The potatoes on this page are of actual
+        size. In Japan or in China (or Korea?) they worshipped a Smiling Potato,
+        and you can find giant flying potatoes there also. At least you could find them in the past, according to the
+        archival and historically accurate image on this page. And yes, golden potatoes exist somewhere deep in the Peruvian jungle.
+        <br>
+        <br>
+        Average world potato consumption was estimated around 32.6 kg per person in 2009, despite the fact that the philosopher Diderot described the root as "tasteless and starchy". What more can I say? Potatoes are bad for rabbits, so all you philosophers and bunnies out there: You have been warned.
+      </p>
+      
+      <p class="text-white text-md font-fira mb-8">
+        First described scientifically by Gaspard Bauhin in 1596, the potato has been studied by many. Oh yes, the potato has a cantankerous genome. It is a tetraploid, which means it has four copies of each chromosome. This makes breeding new potato varieties just a bit more difficult.
+      </p>
+
+      <p class="text-white text-md font-fira mb-8">
+        As the reader may have noticed, an enormous amount of historical and
+        scientific research went into creating this app. Therefore, all the
+        information provided in this app is absolutely accurate. However, for
+        the sceptics, some further sources are given below.
+      </p>
+
+      <p class="text-white text-md font-fira mb-8">
+        The potato production data is sourced from the
+        <a href="https://www.fao.org/faostat/en/#data/QCL" class="text-pink-400"
+          >FAO</a
+        >, or Food and Agriculture Organization of the United Nations.
+      </p>
+
+      <p class="text-white text-md font-fira mb-8">
+        The word frequency data is sourced from the
+        <a href="https://books.google.com/ngrams/graph?content=potato&year_start=1597&year_end=2022&corpus=en&smoothing=3&case_insensitive=false" class="text-pink-400"
+          >Google Ngram Viewer</a
+        >. The
+        <a
+          href="https://github.com/jouniverse/google-ngram-exporter"
+          class="text-pink-400"
+          >Google Ngram Exporter</a
+        >
+        was used to extract the data.
+      </p>
+
+      <div class="chart-container mb-8">
+        <div class="grid grid-cols-1 md:grid-cols-1 gap-8">
+          <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-4 aspect-square">
+            <div class="relative h-full w-full overflow-hidden rounded-xl">
+              <img
+                src="./assets/imgs/about/potato-genome.png"
+                alt="about-1"
+                class="object-cover w-full h-full potato-image cursor-pointer"
+                onclick="window.open('https://www.ncbi.nlm.nih.gov/gdv/browser/genome/?id=GCF_000226075.1', '_blank')"
+              />
+              <div class="image-overlay">Solanum tuberosum (potato) genome</div>
+            </div>
+          </div>
+        </div>    
+      </div>
+
+      <h3 class="text-white text-2xl font-bold mb-8 font-fira">
+        Further tuberological information about potatoes
+        <span class="text-sm"
+          >(Not in order of decreasing significance, but in alphabetical
+          order)</span
+        >
+      </h3>
+
+      <p class="text-white text-md font-fira mb-8">
+        <a href="https://www.nature.com/articles/s41588-022-01015-0" class="text-pink-400"
+          >Chromosome-scale and haplotype-resolved genome assembly of a tetraploid potato cultivar</a
+        >,
+        <a href="https://canadianpotatomuseum.com/" class="text-pink-400"
+          >The Canadian Potato Museum</a
+        >,
+        <a href="https://www.nature.com/articles/s41586-022-04822-x" class="text-pink-400"
+          >Genome evolution and diversity of wild and cultivated potatoes</a
+        >,
+        <a href="https://www.nature.com/articles/nature10158" class="text-pink-400"
+          >Genome sequence and analysis of the tuber crop potato</a
+        >,
+        <a
+          href="https://www.bbc.com/travel/article/20200302-the-true-origins-of-the-humble-potato"
+          class="text-pink-400"
+          >How the humble potato changed the world</a
+        >,
+        <a
+          href="https://www.smithsonianmag.com/history/how-the-potato-changed-the-world-108470605/"
+          class="text-pink-400"
+          >How the Potato Changed the World</a
+        >,
+        <a href="https://idahopotato.com/" class="text-pink-400"
+          >Idaho Potatoes</a
+        >,
+        <a href="https://cipotato.org/" class="text-pink-400"
+          >International Potato Center (CIP)</a
+        >,
+        <a href="https://sampanzer.com/home/potato-science" class="text-pink-400"
+        >On Potatoes: Spud Science</a
+        >,
+        <a href="https://potatogoodness.com/" class="text-pink-400"
+        >Potatoes USA</a
+        >,
+        <a href="https://www.mpg.de/18386613/potato-genome" class="text-pink-400"
+            >Potato genome decoded</a
+        >,
+        <a href="https://www.potatonewstoday.com/" class="text-pink-400"
+          >Potato News</a
+        >,
+        <a href="https://potatoes.agricrops.org/" class="text-pink-400"
+          >Potato Variety Database</a
+        >,
+        <a href="https://www.cabidigitallibrary.org/doi/full/10.1079/cabicompendium.50561" class="text-pink-400"
+          >Solanum tuberosum (potato)</a
+        >,
+        <a href="https://www.solynta.com/" class="text-pink-400"
+          >Solynta</a
+        >,
+        <a
+          href="https://www.plantbreeding.wur.nl/Solyntus/"
+          class="text-pink-400"
+          >Solyntus Genome Sequencing Consortium</a
+        >,
+        <a href="https://spuddb.uga.edu/index.shtml" class="text-pink-400"
+          >Spud DB</a
+        >
+      </p>
+
+    <div class="chart-container mb-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div
+            class="bg-white/5 backdrop-blur-sm rounded-2xl p-4 aspect-square"
+          >
+            <div class="relative h-full w-full overflow-hidden rounded-xl">
+              <img
+                src="./assets/imgs/about/a-1.png"
+                alt="about-1"
+                class="object-cover w-full h-full potato-image"
+              />
+            </div>
+          </div>
+
+          <div
+            class="bg-white/5 backdrop-blur-sm rounded-2xl p-4 aspect-square"
+          >
+            <div class="relative h-full w-full overflow-hidden rounded-xl">
+              <img
+                src="./assets/imgs/about/a-2.png"
+                alt="about-2"
+                class="object-cover w-full h-full potato-image"
+              />
+            </div>
+          </div>
+
+          <div
+            class="bg-white/5 backdrop-blur-sm rounded-2xl p-4 aspect-square"
+          >
+            <div class="relative h-full w-full overflow-hidden rounded-xl">
+              <img
+                src="./assets/imgs/about/a-3.png"
+                alt="about-3"
+                class="object-cover w-full h-full potato-image"
+              />
+            </div>
+          </div>
+        </div>     
+        
+        <!-- <div class="grid grid-cols-1 md:grid-cols-1 gap-8">
+            <div
+              class="bg-white/5 backdrop-blur-sm rounded-2xl p-4 aspect-square"
+            >
+              <div class="relative h-full w-full overflow-hidden rounded-xl">
+                <img
+                  src="./assets/imgs/about/potato-genome.png"
+                  alt="about-1"
+                  class="object-cover w-full h-full potato-image"
+                />
+              </div>
+            </div>
+          </div>      -->
+      </div>
+    </div>
+
+    <!-- Update these script tags -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+    <script src="./js/mobile-blocker.js"></script>
+    <script src="./js/about.js"></script>
+  </body>
+</html>

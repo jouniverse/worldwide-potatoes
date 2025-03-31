@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Worldwide Potatoes</title>
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="/assets/favicon/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/favicon/apple-touch-icon.png"
+    />
+    <link rel="manifest" href="/assets/favicon/site.webmanifest" />
+    <link rel="stylesheet" href="./css/tailwind.css" />
+    <link rel="stylesheet" href="./css/mobile-blocker.css" />
+    <link rel="stylesheet" href="./css/top-20.css" />
+    <link rel="stylesheet" href="./css/scrollbar.css" />
+  </head>
+  <body>
+    <div class="container mx-auto px-8 py-8">
+      <a
+        href="./home.html"
+        style="text-decoration: none; display: inline-block"
+      >
+        <button class="btn-primary">Back to Home</button>
+      </a>
+
+      <h1 class="text-white text-3xl font-bold mb-8 font-fira mt-12">
+        Top 20 Potato Producers (in 2021)
+      </h1>
+
+      <!-- Add collapsible table container -->
+      <div class="chart-container mb-8">
+        <button id="toggleTable" class="btn-primary mb-4">
+          Show Top 20 Production Table
+        </button>
+        <div id="tableContainer" class="transition-all duration-300">
+          <div class="overflow-x-auto">
+            <table class="w-full text-white font-fira">
+              <thead>
+                <tr class="border-b border-gray-700">
+                  <th class="text-left py-3 px-4">Rank</th>
+                  <th class="text-left py-3 px-4">Country</th>
+                  <th class="text-right py-3 px-4">Production (tonnes)</th>
+                </tr>
+              </thead>
+              <tbody id="productionTable">
+                <!-- Table rows will be inserted here by JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="chart-container mb-8">
+        <div class="ussr-legend text-white font-lato">
+          <img
+            src="./assets/logos/hammer-and-sickle/hammer-and-sickle-red.png"
+            alt="USSR symbol"
+          />
+          <span class="text-gray-400 text-xs font-fira"
+            >Indicates countries that were part of the
+            <span class="text-hotpink">USSR</span> in 1961 (also shown with a
+            red border)</span
+          >
+        </div>
+        <div style="height: 600px">
+          <canvas id="bubbleChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Add new chart container -->
+      <div class="chart-container mb-8">
+        <h2 class="text-white text-2xl font-bold mb-6 font-fira">
+          Change in Potato Production (1961-2021)
+        </h2>
+        <div style="height: 400px">
+          <canvas id="changeChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Add image section -->
+      <div class="chart-container mb-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div
+            class="bg-white/5 backdrop-blur-sm rounded-2xl p-4 aspect-square"
+          >
+            <div class="relative h-full w-full overflow-hidden rounded-xl">
+              <img
+                src="./assets/imgs/top-20/t20-1.png"
+                alt="top-20-1"
+                class="object-cover w-full h-full potato-image"
+              />
+            </div>
+          </div>
+
+          <div
+            class="bg-white/5 backdrop-blur-sm rounded-2xl p-4 aspect-square"
+          >
+            <div class="relative h-full w-full overflow-hidden rounded-xl">
+              <img
+                src="./assets/imgs/top-20/t20-2.png"
+                alt="top-20-2"
+                class="object-cover w-full h-full potato-image"
+              />
+            </div>
+          </div>
+
+          <div
+            class="bg-white/5 backdrop-blur-sm rounded-2xl p-4 aspect-square"
+          >
+            <div class="relative h-full w-full overflow-hidden rounded-xl">
+              <img
+                src="./assets/imgs/top-20/t20-3.png"
+                alt="top-20-3"
+                class="object-cover w-full h-full potato-image"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Update these script tags -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+    <script src="./js/mobile-blocker.js"></script>
+    <script src="./js/top-20.js"></script>
+  </body>
+</html>

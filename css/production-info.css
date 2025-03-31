@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Fira+Code:wght@300..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+.font-fira {
+  font-family: "Fira Code", monospace;
+}
+
+.font-exo {
+  font-family: "Exo 2", sans-serif;
+}
+.font-lato {
+  font-family: "Lato", sans-serif;
+}
+/* #sidebar {
+        background-color: rgba(215, 215, 215, 1);
+      } */
+
+.btn-primary {
+  background-color: rgba(255, 105, 180, 0.2);
+  margin-bottom: 2rem;
+  border: 2px solid #ff69b4;
+  border-radius: 9999px;
+  color: white;
+  font-family: "Fira Code", monospace;
+  padding: 0.75rem 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: rgba(255, 105, 180, 0.3);
+  filter: blur(0.04em);
+  -webkit-filter: blur(0.04em);
+  -moz-filter: blur(0.04em);
+  -ms-filter: blur(0.04em);
+  transform: scale(0.98);
+}
