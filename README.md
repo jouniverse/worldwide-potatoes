@@ -2,7 +2,7 @@
 
 ## Description
 
-**Worldwide Potatoes** is a collection of data visualizations and information about potatoes. Everything in the app is entirely 100% factual.
+[**Worldwide Potatoes**](https://www.worldwidepotatoes.com) is a collection of data visualizations and information about potatoes. Everything in the app is entirely 100% factual.
 
 ## Data
 
