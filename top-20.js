@@ -13,7 +13,7 @@ function convertCountryName(faoName) {
 }
 
 async function loadData() {
-  const response = await fetch("../data/json/potato-production-top-20.json");
+  const response = await fetch("./data/json/potato-production-top-20.json");
   const json = await response.json();
   return json.data;
 }
@@ -168,7 +168,7 @@ function createBubbleChart(data) {
                   <span>${dataPoint.country}</span>
                   ${
                     countryData.wasUSSR
-                      ? '<img src="../assets/logos/hammer-and-sickle/hammer-and-sickle-red.png" style="width: 16px; height: 16px;">'
+                      ? '<img src="./assets/logos/hammer-and-sickle/hammer-and-sickle-red.png" style="width: 16px; height: 16px;">'
                       : ""
                   }
                 </div>
@@ -371,7 +371,7 @@ function createProductionTable(data) {
 
     // Add USSR symbol for former USSR countries
     const countryName = country.wasUSSR
-      ? `${country.country} <img src="../assets/logos/hammer-and-sickle/hammer-and-sickle-red.png" 
+      ? `${country.country} <img src="./assets/logos/hammer-and-sickle/hammer-and-sickle-red.png" 
          alt="USSR" style="display: inline; width: 16px; height: 16px; vertical-align: middle;">`
       : country.country;
 

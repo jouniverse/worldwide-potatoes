@@ -1,6 +1,6 @@
 async function fetchNgramData() {
   try {
-    const response = await fetch("../data/json/potato-ngram.json");
+    const response = await fetch("./data/json/potato-ngram.json");
     const data = await response.json();
     return data.data;
   } catch (error) {

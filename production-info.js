@@ -26,7 +26,7 @@ let countriesData;
 
 // Add this fetch for the countries data
 async function loadCountries() {
-  const response = await fetch("../data/json/countries.json");
+  const response = await fetch("./data/json/countries.json");
   return await response.json();
 }
 
@@ -141,10 +141,10 @@ async function init() {
     loadCountries(),
     loadPotatoData(),
     loadAreaAndYieldData(),
-    loadShader("../shaders/vertex.glsl"),
-    loadShader("../shaders/fragment.glsl"),
-    loadShader("../shaders/atmosphereVertex.glsl"),
-    loadShader("../shaders/atmosphereFragment.glsl"),
+    loadShader("./shaders/vertex.glsl"),
+    loadShader("./shaders/fragment.glsl"),
+    loadShader("./shaders/atmosphereVertex.glsl"),
+    loadShader("./shaders/atmosphereFragment.glsl"),
   ]);
 
   // Assign to global variable
@@ -167,7 +167,7 @@ async function init() {
     uniforms: {
       globeTexture: {
         value: new THREE.TextureLoader().load(
-          "../assets/imgs/globe-8K-pink.jpg"
+          "./assets/imgs/globe-8K-pink.jpg"
         ),
       },
     },
@@ -423,7 +423,7 @@ let yieldChart = null;
 
 // Add this function to load area and yield data
 async function loadAreaAndYieldData() {
-  const response = await fetch("../data/json/potato-production-data.json");
+  const response = await fetch("./data/json/potato-production-data.json");
   const data = await response.json();
 
   const areaByCountry = {};
@@ -831,7 +831,7 @@ function getFAOCountryName(restCountriesName) {
 
 // Add this function to load potato production data
 async function loadPotatoData() {
-  const response = await fetch("../data/json/potato-production-data.json");
+  const response = await fetch("./data/json/potato-production-data.json");
   const data = await response.json();
 
   // Transform data into a more usable format
