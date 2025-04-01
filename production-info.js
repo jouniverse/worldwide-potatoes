@@ -23,6 +23,7 @@ Chart.register(
 
 // Add this near the top of the file with other global variables
 let countriesData;
+let selectedBox = null;
 
 // Add this fetch for the countries data
 async function loadCountries() {
@@ -608,8 +609,11 @@ function animate() {
   // Handle intersections
   if (intersects.length > 0) {
     const intersectedBox = intersects[0].object;
+
+    // Always highlight the hovered box
     intersectedBox.material.opacity = 1;
 
+    // Update popup for the hovered box
     const popUpEl = document.querySelector("#popUpEl");
     const countryNameEl = document.querySelector("#countryNameEl");
     const productionValueEl = document.querySelector("#productionValueEl");
@@ -643,52 +647,15 @@ function animate() {
       chartContainer.style.display = "block";
       noDataEl.style.display = "none";
       createOrUpdateChart(intersectedBox.productionData);
-
-      // Update sidebar content
-      const sidebarCountry = document.getElementById("sidebarCountry");
-      const sidebarPopulation = document.getElementById("sidebarPopulation");
-      const chartsContainer = document.getElementById("chartsContainer");
-
-      sidebarCountry.textContent = intersectedBox.country;
-      chartsContainer.classList.remove("hidden"); // Show charts container
-
-      const countryData = countriesData.find(
-        (c) => c.name.common === intersectedBox.country
-      );
-      const population = countryData
-        ? countryData.population.toLocaleString()
-        : "N/A";
-      sidebarPopulation.textContent = `Population (2025): ${population}`;
-
-      createOrUpdateSidebarCharts({
-        areaData: intersectedBox.areaData,
-        yieldData: intersectedBox.yieldData,
-      });
     } else {
       productionValueEl.style.display = "none";
       chartContainer.style.display = "none";
       noDataEl.style.display = "block";
+    }
 
-      // Update sidebar content
-      const sidebarCountry = document.getElementById("sidebarCountry");
-      const sidebarPopulation = document.getElementById("sidebarPopulation");
-      const chartsContainer = document.getElementById("chartsContainer");
-
-      sidebarCountry.textContent = intersectedBox.country;
-      chartsContainer.classList.add("hidden"); // Hide charts container
-
-      // Show population even for countries without potato data
-      const countryData = countriesData.find(
-        (c) => c.name.common === intersectedBox.country
-      );
-      const population = countryData
-        ? countryData.population.toLocaleString()
-        : "N/A";
-      sidebarPopulation.textContent = `Population (2025): ${population}`;
-
-      // Clear the charts
-      if (areaChart) areaChart.destroy();
-      if (yieldChart) yieldChart.destroy();
+    // Only update sidebar if no country is selected
+    if (!selectedBox) {
+      updateSidebarContent(intersectedBox);
     }
   }
 
@@ -851,4 +818,71 @@ async function loadPotatoData() {
   });
 
   return productionByCountry;
+}
+
+// Add after the other event listeners
+canvasContainer.addEventListener("click", (event) => {
+  // Get canvas container bounds
+  const rect = canvasContainer.getBoundingClientRect();
+
+  // Update mouse coordinates for raycaster
+  mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+  mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+
+  // Update the picking ray with the camera and mouse position
+  raycaster.setFromCamera(mouse, camera);
+
+  // Calculate objects intersecting the picking ray
+  const intersects = raycaster.intersectObjects(
+    group.children.filter((mesh) => mesh.geometry.type === "BoxGeometry")
+  );
+
+  if (intersects.length > 0) {
+    const clickedBox = intersects[0].object;
+
+    // If clicking the same box, deselect it
+    if (selectedBox === clickedBox) {
+      selectedBox = null;
+    } else {
+      selectedBox = clickedBox;
+    }
+
+    // Update the sidebar immediately with the selected box's data
+    updateSidebarContent(selectedBox);
+  }
+});
+
+function updateSidebarContent(box) {
+  const sidebarCountry = document.getElementById("sidebarCountry");
+  const sidebarPopulation = document.getElementById("sidebarPopulation");
+  const chartsContainer = document.getElementById("chartsContainer");
+
+  if (!box) {
+    sidebarCountry.textContent = "Select a country";
+    sidebarPopulation.textContent = "";
+    chartsContainer.classList.add("hidden");
+    if (areaChart) areaChart.destroy();
+    if (yieldChart) yieldChart.destroy();
+    return;
+  }
+
+  sidebarCountry.textContent = box.country;
+
+  const countryData = countriesData.find((c) => c.name.common === box.country);
+  const population = countryData
+    ? countryData.population.toLocaleString()
+    : "N/A";
+  sidebarPopulation.textContent = `Population (2025): ${population}`;
+
+  if (box.hasData) {
+    chartsContainer.classList.remove("hidden");
+    createOrUpdateSidebarCharts({
+      areaData: box.areaData,
+      yieldData: box.yieldData,
+    });
+  } else {
+    chartsContainer.classList.add("hidden");
+    if (areaChart) areaChart.destroy();
+    if (yieldChart) yieldChart.destroy();
+  }
 }
