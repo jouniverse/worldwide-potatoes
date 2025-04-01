@@ -50,9 +50,9 @@
         No potato production data available
       </p>
     </div>
-    <div id="sidebar" class="xl:flex h-screen bg-black">
-      <div class="xl:w-1/4 flex flex-col justify-top px-8 py-20">
-        <div style="max-width: 500px">
+    <div id="sidebar" class="xl:flex h-screen bg-black overflow-hidden">
+      <div class="xl:w-1/4 flex flex-col px-8 py-12">
+        <div class="max-w-[500px] h-full overflow-y-auto pr-4">
           <a
             href="./home.html"
             style="text-decoration: none; display: inline-block"
@@ -72,13 +72,13 @@
             <div id="chartsContainer" class="space-y-8 hidden">
               <div class="chart-container">
                 <h3 class="text-lg mb-3">Area Harvested</h3>
-                <div style="height: 200px">
+                <div style="height: 180px">
                   <canvas id="areaChart"></canvas>
                 </div>
               </div>
-              <div class="chart-container">
+              <div class="chart-container mb-8">
                 <h3 class="text-lg mb-3">Yield</h3>
-                <div style="height: 200px">
+                <div style="height: 180px">
                   <canvas id="yieldChart"></canvas>
                 </div>
               </div>
